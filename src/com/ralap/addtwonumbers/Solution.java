@@ -15,18 +15,24 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
+        ListNode l1 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9))));
+        ListNode l2 = new ListNode(9, new ListNode(9));
 
-        int[] resultHash = solution.addTwoNumbers();
-        Arrays.stream(resultHash).forEach(System.out::println);
+
+        ListNode result = solution.addTwoNumbers(l1, l2);
+        while (result != null) {
+            System.out.println(result.val);
+            result = result.next;
+        }
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode head = null, tail = null;
         int carry = 0;
         while (l1 != null || l2 != null) {
-            int n1 = l1 != null ? l1.val : 0;
-            int n2 = l2 != null ? l2.val : 0;
-            int sum = n1 + n2 + carry;
+            int var1 = l1 == null ? 0 : l1.val;
+            int var2 = l2 == null ? 0 : l2.val;
+            int sum = var1 + var2 + carry;
             if (head == null) {
                 head = tail = new ListNode(sum % 10);
             } else {
@@ -37,11 +43,12 @@ public class Solution {
             if (l1 != null) {
                 l1 = l1.next;
             }
+
             if (l2 != null) {
                 l2 = l2.next;
             }
         }
-        if (carry > 0) {
+        if (carry != 0) {
             tail.next = new ListNode(carry);
         }
         return head;
