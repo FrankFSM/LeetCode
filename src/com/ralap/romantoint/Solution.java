@@ -50,7 +50,7 @@ public class Solution {
         for (int i = 0; i < s.length(); i++) {
             int var = source.get(String.valueOf(s.charAt(i)));
             //  当前元素值小于后一个值，需要减
-            if ( i < s.length()-1 &&  var < source.get(String.valueOf(s.charAt(i + 1)))) {
+            if (i < s.length() - 1 && var < source.get(String.valueOf(s.charAt(i + 1)))) {
                 num -= var;
             } else {
                 num += var;
