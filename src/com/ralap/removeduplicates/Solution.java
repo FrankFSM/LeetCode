@@ -30,12 +30,16 @@ public class Solution {
         if (nums.length <= 0) {
             return 0;
         }
+        // 快：遍历，慢：赋值
         int fast = 1, slow = 1;
         while (fast < nums.length) {
+            // 与上一个比较
             if (nums[fast] != nums[fast - 1]) {
+                // 不相等，赋值，慢指针后移
                 nums[slow] = nums[fast];
                 slow++;
             }
+            // 快指针后移
             fast++;
         }
         return slow;
