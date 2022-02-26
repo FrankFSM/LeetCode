@@ -27,6 +27,7 @@ public class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode newList = null, tail = null, next;
         while (list1 != null || list2 != null) {
+            //  如果只剩单个列表，直接复制
             if (list1 == null) {
                 if(newList == null){
                     newList = list2;
@@ -44,13 +45,18 @@ public class Solution {
                 break;
             }
             if (list1.val <= list2.val) {
+                // 列表一中的数据 <= 列表二中的
                 if (newList == null) {
+                    // 首次创建
                     newList = tail = new ListNode(list1.val);
                 } else {
                     next = new ListNode(list1.val);
+                    // 加入新节点
                     tail.next = next;
+                    // 未节点后移
                     tail = tail.next;
                 }
+                // 遍历后移
                 list1 = list1.next;
             } else {
                 if (newList == null) {
