@@ -69,11 +69,12 @@ public class Solution {
         if (arr == null || arr.length < 2) {
             return arr;
         }
+
         for (int i = 1; i < arr.length; i++) {
             int index = 0;
+            int tmp = arr[i];
             for (int j = i; j >= 1; j--) {
-
-                if (arr[j] < arr[j - 1]) {
+                if (arr[j - 1] > tmp) {
                     arr[j] = arr[j - 1];
                 } else {
                     index = j;
@@ -81,10 +82,22 @@ public class Solution {
                 }
             }
             if (i != index) {
-                arr[index] = arr[i];
+                arr[index] = tmp;
             }
         }
         return arr;
+    }
+
+    /**
+     * 归并排序
+     */
+    public int[] mergeSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return arr;
+        }
+
+        int mid = arr.length >> 1;
+        int[] left = arr.
     }
 
 }
