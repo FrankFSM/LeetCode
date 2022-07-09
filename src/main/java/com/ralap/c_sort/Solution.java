@@ -97,7 +97,13 @@ public class Solution {
         }
 
         int mid = arr.length >> 1;
-        int[] left = arr.
+//        int[] left = arr.
+        return null;
+    }
+
+    private int[] merge(int mid, int[] left, int[] right) {
+//        if()
+        return null;
     }
 
 }
