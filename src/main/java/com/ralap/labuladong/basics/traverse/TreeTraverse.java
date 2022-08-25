@@ -2,15 +2,50 @@ package com.ralap.labuladong.basics.traverse;
 
 import com.ralap.comm.TreeNode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * 树的相关遍历
  */
 public class TreeTraverse {
     private TreeNode root;
 
-
     public TreeTraverse(TreeNode root) {
         this.root = root;
+    }
+
+    // 广度优先
+    public void bfs(){
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode currNode = queue.poll();
+            if (currNode.left != null) {
+                queue.add(currNode.left);
+            }
+            if (currNode.right != null) {
+                queue.add(currNode.right);
+            }
+            System.out.println(currNode.val);
+        }
+    }
+
+    // 深度优先
+    public void dfs(){
+        Stack<TreeNode> stack = new Stack();
+        stack.push(root);
+
+        while(!stack.isEmpty()){
+            TreeNode currNode = stack.pop();
+            System.out.println(currNode.val);
+            // 先右后左
+            if(currNode.right != null)
+                stack.push(currNode.right);
+            if(currNode.left != null)
+                stack.push(currNode.left);
+        }
     }
 
     /**
@@ -61,12 +96,4 @@ public class TreeTraverse {
         doPreOrder(node.left);
         doPreOrder(node.right);
     }
-
-
-    //
-    //
-    // 广度优先遍历
-    // 深度优先遍历
-
-
 }

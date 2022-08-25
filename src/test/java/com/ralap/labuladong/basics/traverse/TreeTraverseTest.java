@@ -34,4 +34,14 @@ public class TreeTraverseTest {
     public void postOrder() {
         this.traverse.postOrder();
     }
+
+    @Test
+    public void dfs() {
+        this.traverse.dfs();
+    }
+
+    @Test
+    public void bfs() {
+        this.traverse.bfs();
+    }
 }
