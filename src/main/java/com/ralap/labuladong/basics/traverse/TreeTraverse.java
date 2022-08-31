@@ -16,7 +16,9 @@ public class TreeTraverse {
         this.root = root;
     }
 
-    // 广度优先
+    /**
+     * 广度优先
+     */
     public void bfs(){
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
@@ -32,7 +34,9 @@ public class TreeTraverse {
         }
     }
 
-    // 深度优先
+    /**
+     * 深度优先
+     */
     public void dfs(){
         Stack<TreeNode> stack = new Stack();
         stack.push(root);
