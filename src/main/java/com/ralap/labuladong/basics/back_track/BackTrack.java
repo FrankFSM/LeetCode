@@ -1,4 +1,4 @@
-package com.ralap.labuladong.basics.dynamic_programming;
+package com.ralap.labuladong.basics.back_track;
 
 import java.util.LinkedList;
 import java.util.List;
