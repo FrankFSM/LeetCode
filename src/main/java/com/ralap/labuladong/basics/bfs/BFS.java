@@ -62,7 +62,9 @@ public class BFS {
 
         while (!queue.isEmpty()) {
             int size = queue.size();
+            // 这一层的所有可能
             for (int i = 0; i < size; i++) {
+                // 逐个出队
                 String curr = queue.poll();
                 // 合法性
                 if (deadSet.contains(curr)) {
@@ -72,31 +74,29 @@ public class BFS {
                 if (curr.equals(target)) {
                     return step;
                 }
-
+                // 每个位置的情况
                 for (int j = 0; j < start.length(); j++) {
+                    // 向上旋转
                     String up = this.plusOne(curr, j);
-                    if(!visited.contains(up)){
+                    if (!visited.contains(up)) {
                         queue.offer(up);
                         visited.add(up);
                     }
+                    // 向下旋转
                     String down = this.minusOne(curr, j);
                     if (!visited.contains(down)) {
                         queue.offer(down);
                         visited.add(down);
                     }
                 }
-
             }
             step++;
-
         }
-        return step;
+        return -1;
     }
 
     /**
      * 向上
-     *
-     * @return
      */
     private String plusOne(String s, int j) {
         char[] chars = s.toCharArray();
@@ -111,8 +111,6 @@ public class BFS {
 
     /**
      * 向下
-     *
-     * @return
      */
     private String minusOne(String s, int j) {
         char[] chars = s.toCharArray();
