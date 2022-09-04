@@ -11,10 +11,9 @@ public class SlidingWindow {
         if (source.length() == 0) {
             return 0;
         }
-        Map<Character, Integer> window, need;
+        Map<Character, Integer> window;
         window = new HashMap<>();
-        need = new HashMap<>();
-        int left = 0, right = 0, valid = 0, result = 0;
+        int left = 0, right = 0, result = 0;
         while (right < source.length()) {
             Character currLast = source.charAt(right);
             right++;
@@ -28,6 +27,7 @@ public class SlidingWindow {
         }
         return result;
     }
+
     /**
      * 所有字母异位词
      */
