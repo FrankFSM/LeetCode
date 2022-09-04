@@ -36,4 +36,32 @@ public class LeftAndRightTest {
         solution.reverse(arr);
         PrintUtils.printArrayJoin(arr, " | ");
     }
+
+    @Test
+    public void leftBinarySearch() {
+        LeftAndRight solution  = new LeftAndRight();
+        int[] array = new int[]{1,1,2,2,2,3};
+        System.out.println(solution.leftBinarySearch(array, 3));
+    }
+
+    @Test
+    public void rightBinarySearch() {
+        LeftAndRight solution  = new LeftAndRight();
+        int[] array = new int[]{1,1,2,2,2,3};
+        System.out.println(solution.rightBinarySearch(array, 1));
+    }
+
+    @Test
+    public void leftBound() {
+        LeftAndRight solution  = new LeftAndRight();
+        int[] array = new int[]{1,1,2,2,2,3};
+        System.out.println(solution.leftBound(array, 2));
+    }
+
+    @Test
+    public void rightBound() {
+        LeftAndRight solution  = new LeftAndRight();
+        int[] array = new int[]{1,1,2,2,2,3};
+        System.out.println(solution.rightBound(array, 1));
+    }
 }
