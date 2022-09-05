@@ -79,6 +79,7 @@ public class LeftAndRight {
 
     /**
      * 二分搜索-最右
+     * [left, right]
      */
     public int rightBound(int[] array, int target) {
         if (array.length <= 0) {
