@@ -1,6 +1,7 @@
 package com.ralap.labuladong.basics.dynamic_programming;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * 最长递增子串
@@ -8,10 +9,31 @@ import java.util.Arrays;
 public class LengthOfLIS {
 
     /**
+     * 二维递增子序列信封切套问题
+     */
+    public int maxEnvelopes(int[][] envelopes) {
+        // 宽生序、高降序
+        Arrays.sort(envelopes, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] == o2[0] ? o2[1] - o1[1]: o1[0] - o2[0];
+            }
+        });
+
+        // 获取所有高度
+        int[] heights = new int[envelopes.length];
+        for (int i = 0; i < envelopes.length; i++) {
+            heights[i] = envelopes[i][1];
+        }
+        return this.lengthOfLIS(heights);
+    }
+
+
+    /**
      * @param array
      * @return
      */
-    public int solution(int[] array) {
+    public int lengthOfLIS(int[] array) {
         int[] dp = new int[array.length];
         // 最少是1
         Arrays.fill(dp, 1);
