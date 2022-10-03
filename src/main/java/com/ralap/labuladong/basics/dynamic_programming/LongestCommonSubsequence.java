@@ -24,7 +24,7 @@ public class LongestCommonSubsequence {
         // 如果当前字符相等，就是上一个最长子窜 + 1
         if (this.str1.charAt(str1Len) == this.str2.charAt(str2Len)) {
             return helper(str1Len - 1, str2Len - 1) + 1;
-        }else {
+        } else {
             // 如果不等，这里选上一个最大的
             return Math.max(helper(str1Len - 1, str2Len), helper(str1Len, str2Len - 1));
         }
