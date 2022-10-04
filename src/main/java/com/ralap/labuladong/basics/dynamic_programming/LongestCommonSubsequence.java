@@ -2,6 +2,10 @@ package com.ralap.labuladong.basics.dynamic_programming;
 
 /**
  * 最长公共子窜
+ * 1. 明确DP数组含义
+ * 2. 定义base case
+ * 3. 状态转移方程式
+ * 4.
  */
 public class LongestCommonSubsequence {
     private String str1;
