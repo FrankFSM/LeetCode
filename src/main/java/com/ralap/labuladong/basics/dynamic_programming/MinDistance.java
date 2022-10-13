@@ -8,10 +8,10 @@ class Node {
     public int var;
     public Choice choice;
 
-    public Node(int var, enum choice) {
-        this.var = var;
-        this.choice = choice;
-    }
+//    public Node(int var, enum choice) {
+//        this.var = var;
+//        this.choice = choice;
+//    }
 }
 
 
