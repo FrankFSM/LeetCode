@@ -61,23 +61,26 @@ public class SearchTree {
         if (this.root == null) {
             return null;
         }
-        // 找目标节点
-
+        // 目标节点
         if (root.val == value) {
             // 目标节点就是叶子节点
             if (root.left == null && root.right == null) {
                 return null;
             }
-
+            // 只有右子树
             if (root.left == null) {
                 return root.right;
             }
+            // 只有左子树
             if (root.right == null) {
                 return root.left;
             }
-
+            // 左右子树同时存在
+            // 找到右子树最小
             TreeNode minNode = this.getMinNode(root);
+            // 从右子树把这个节点删除，并重制root的右子树
             root.right = delete(root.right,minNode.val);
+            // 替换节点
             minNode.left = root.left;
             minNode.right = root.right;
             root = minNode;
