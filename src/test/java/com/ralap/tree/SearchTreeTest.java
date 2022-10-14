@@ -18,4 +18,23 @@ public class SearchTreeTest extends TestCase {
         TreeNode root  = st.getRoot();
         TreeNode.midTraversal(root);
     }
+
+    public void testDelete() {
+        SearchTree st = new SearchTree();
+        st.insert(6);
+        st.insert(4);
+        st.insert(9);
+        st.insert(3);
+        st.insert(5);
+        st.insert(7);
+        st.insert(11);
+        st.insert(2);
+        TreeNode root  = st.getRoot();
+        TreeNode.midTraversal(root);
+
+        System.out.println("====================");
+        st.delete(root, 5);
+        TreeNode.midTraversal(root);
+
+    }
 }
