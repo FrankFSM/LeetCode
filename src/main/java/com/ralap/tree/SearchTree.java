@@ -58,7 +58,7 @@ public class SearchTree {
      * @return
      */
     public TreeNode delete(TreeNode root, int value) {
-        if (this.root == null) {
+        if (root == null) {
             return null;
         }
         // 目标节点
@@ -77,7 +77,7 @@ public class SearchTree {
             }
             // 左右子树同时存在
             // 找到右子树最小
-            TreeNode minNode = this.getMinNode(root);
+            TreeNode minNode = this.getMinNode(root.right);
             // 从右子树把这个节点删除，并重制root的右子树
             root.right = delete(root.right,minNode.val);
             // 替换节点
@@ -85,18 +85,18 @@ public class SearchTree {
             minNode.right = root.right;
             root = minNode;
         } else if (root.val > value) {
+            // 向左找
             root.left = this.delete(root.left, value);
         } else {
+            // 向右找
             root.right = this.delete(root.right, value);
         }
         return root;
-
-
     }
 
     private TreeNode getMinNode(TreeNode root) {
         if (root == null) {
-            return root;
+            return null;
         }
         while (root.left != null) {
             root = root.left;
