@@ -14,7 +14,6 @@ public class SearchTree {
 
     /**
      * 插入
-     *
      * @param value
      * @return
      */
@@ -50,50 +49,53 @@ public class SearchTree {
     }
 
     /**
-     * 删除
+     * 移除节点
      * 1. 根节点为空： 返回false
      * 2. 找到目标节点
      * 3. 通过将左子树最大或者右子树最小替换
      *
      * @return
      */
-    public TreeNode delete(TreeNode root, int value) {
+    public TreeNode remove(TreeNode root, int value) {
         if (root == null) {
             return null;
         }
-        // 目标节点
-        if (root.val == value) {
-            // 目标节点就是叶子节点
+        int rootVal = root.val;
+        if (rootVal == value) {
             if (root.left == null && root.right == null) {
                 return null;
             }
-            // 只有右子树
+
+            // 左子树为空，返回右子树，反之亦然
             if (root.left == null) {
                 return root.right;
             }
-            // 只有左子树
             if (root.right == null) {
                 return root.left;
             }
-            // 左右子树同时存在
-            // 找到右子树最小
-            TreeNode minNode = this.getMinNode(root.right);
-            // 从右子树把这个节点删除，并重制root的右子树
-            root.right = delete(root.right,minNode.val);
+
+            // 找到右子树最小节点
+            TreeNode rightMinNode = this.getMinNode(root.right);
+            root.right = this.remove(root.right, rightMinNode.val);
             // 替换节点
-            minNode.left = root.left;
-            minNode.right = root.right;
-            root = minNode;
-        } else if (root.val > value) {
+            rightMinNode.left = root.left;
+            rightMinNode.right = root.right;
+            root = rightMinNode;
+        } else if (rootVal > value) {
             // 向左找
-            root.left = this.delete(root.left, value);
-        } else {
+            root.left = this.remove(root.left, value);
+        }else {
             // 向右找
-            root.right = this.delete(root.right, value);
+            root.right = this.remove(root.right, value);
         }
         return root;
     }
 
+    /**
+     * 找到最小的节点（最左节点）
+     * @param root
+     * @return
+     */
     private TreeNode getMinNode(TreeNode root) {
         if (root == null) {
             return null;

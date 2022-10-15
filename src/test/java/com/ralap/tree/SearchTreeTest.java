@@ -33,7 +33,7 @@ public class SearchTreeTest extends TestCase {
         TreeNode.midTraversal(root);
 
         System.out.println("====================");
-        st.delete(root, 9);
+        st.remove(root, 9);
         TreeNode.midTraversal(root);
 
     }
