@@ -9,6 +9,7 @@ import java.util.Queue;
  */
 public class TreeNode {
     public int val;        // 值
+    public int height;
     public TreeNode left;  // 左子树
     public TreeNode right; // 右子树
 
@@ -93,5 +94,15 @@ public class TreeNode {
         postTraversal(root.left);
         postTraversal(root.right);
         System.out.print(root.val + ",");
+    }
+
+    /**
+     * 计算高度
+     */
+    public static int heightTree(TreeNode root) {
+        if (root != null) {
+            return Math.max(heightTree(root.left), heightTree(root.right)) + 1;
+        }
+        return 0;
     }
 }
