@@ -22,4 +22,10 @@ public class MinDistanceTest {
         MinDistance md = new MinDistance();
         System.out.println(md.dpSolution("rad", "apple"));
     }
+
+    @Test
+    public void testDpNodeSolution() {
+        MinDistance md = new MinDistance();
+        System.out.println(md.dpNodeSolution("rad", "apple"));
+    }
 }

@@ -5,13 +5,21 @@ enum Choice {
 }
 
 class Node {
-    public int var;
+    public int value;
     public Choice choice;
 
-//    public Node(int var, enum choice) {
-//        this.var = var;
-//        this.choice = choice;
-//    }
+    public Node(int value, Choice choice) {
+        this.value = value;
+        this.choice = choice;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + value +
+                ", choice=" + choice +
+                '}';
+    }
 }
 
 
@@ -128,5 +136,101 @@ public class MinDistance {
             }
         }
         return dp[str1Len - 1][str2Len - 1];
+    }
+
+
+    /**
+     * dp table print
+     * str1 -> str2
+     */
+    public Node dpNodeSolution(String str1, String str2) {
+        int str1Length = str1.length();
+        int str2Length = str2.length();
+        Node[][] dpTable = new Node[str1Length + 1][str2Length + 1];
+        // base case
+        for (int i = 0; i <= str1Length; i++) {
+            // str2为空，str1要删除
+            dpTable[i][0] = new Node(i, Choice.DELETE);
+        }
+        for (int i = 0; i <= str2Length; i++) {
+            // str1为空，str1要新增
+            dpTable[0][i] = new Node(i, Choice.ADD);
+        }
+        // 状态转移
+        for (int i = 1; i <= str1Length; i++) {
+            for (int j = 1; j <= str2Length; j++) {
+                if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+                    dpTable[i][j] = new Node(dpTable[i - 1][j - 1].value, Choice.NO);
+                } else {
+                    dpTable[i][j] = this.minNode(dpTable[i][j - 1], dpTable[i - 1][j], dpTable[i - 1][j - 1]);
+                    dpTable[i][j].value++;
+                }
+            }
+        }
+        this.print(dpTable, str1, str2);
+        return dpTable[str1Length][str2Length];
+    }
+
+    public void print(Node[][] dpTable, String str1, String str2) {
+        int rows = dpTable.length;
+        int cols = dpTable[0].length;
+        int row = rows - 1;
+        int col = cols - 1;
+        while (row != 0 && col != 0) {
+            char c1 = str1.charAt(row - 1);
+            char c2 = str2.charAt(col - 1);
+            Choice choice = dpTable[row][col].choice;
+            System.out.println("s1[" + (row - 1) + "]");
+            switch (choice) {
+                case NO:
+                    System.out.println("skip: " + c1);
+                    row--;
+                    col--;
+                    break;
+                case ADD:
+                    System.out.println("add: " + c2);
+                    col--;
+                    break;
+                case DELETE:
+                    System.out.println("delete: " + c1);
+                    row--;
+                    break;
+                case UPDATE:
+                    System.out.println("update: " + c1 + " to " + c2);
+                    row--;
+                    col--;
+                    break;
+            }
+
+        }
+
+        while (row > 0) {
+            System.out.println("str1[" + (row -1) + "]");
+            System.out.println("delete: " + str1.charAt(row-1));
+            row--;
+        }
+        while (col > 0) {
+            System.out.println("str1[0]");
+            System.out.println("add: " + str2.charAt(col-1));
+            col--;
+        }
+
+    }
+
+    /**
+     * 计算value最小的Node
+     */
+    private Node minNode(Node add, Node delete, Node update) {
+        Node res = new Node(add.value, Choice.ADD);
+        if (delete.value < res.value) {
+            res.value = delete.value;
+            res.choice = Choice.DELETE;
+        }
+
+        if (update.value < res.value) {
+            res.value = update.value;
+            res.choice = Choice.UPDATE;
+        }
+        return res;
     }
 }
