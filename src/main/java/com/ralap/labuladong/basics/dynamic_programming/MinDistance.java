@@ -201,20 +201,20 @@ public class MinDistance {
                     col--;
                     break;
             }
-
         }
 
+        // str1未处理完，直接删除
         while (row > 0) {
             System.out.println("str1[" + (row -1) + "]");
             System.out.println("delete: " + str1.charAt(row-1));
             row--;
         }
+        // str2未处理完，直接添加到str1
         while (col > 0) {
             System.out.println("str1[0]");
             System.out.println("add: " + str2.charAt(col-1));
             col--;
         }
-
     }
 
     /**
