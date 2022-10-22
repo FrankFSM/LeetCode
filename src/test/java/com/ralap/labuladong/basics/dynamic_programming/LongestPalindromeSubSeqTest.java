@@ -8,4 +8,9 @@ public class LongestPalindromeSubSeqTest extends TestCase {
         LongestPalindromeSubSeq lps = new LongestPalindromeSubSeq();
         System.out.println(lps.solution("aecaacdea"));
     }
+
+    public void testMinInsert() {
+        LongestPalindromeSubSeq lps = new LongestPalindromeSubSeq();
+        System.out.println(lps.minInsert("abced"));
+    }
 }
