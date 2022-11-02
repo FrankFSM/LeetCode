@@ -34,13 +34,16 @@ public class RegularMatch {
             return true;
         }
         if (str.charAt(strIndex) == temp.charAt(tempIndex) || temp.charAt(tempIndex) == '.') {
-            if (tempIndex < temp.length() - 1 && temp.charAt(tempIndex) == '*') {
+
+            if (tempIndex < temp.length() - 1 && temp.charAt(tempIndex + 1) == '*') {
+                // 匹配0次或多次
                 return isMatch(str, strIndex + 1, temp, tempIndex)
                         || isMatch(str, strIndex, temp, tempIndex + 2);
             } else {
                 return isMatch(str, strIndex + 1, temp, tempIndex + 1);
             }
         } else {
+            // 匹配0次
             if (tempIndex < temp.length() - 1 && temp.charAt(tempIndex + 1) == '*') {
                 return isMatch(str, strIndex, temp, tempIndex + 2);
             } else {
