@@ -16,23 +16,22 @@ public class _4_FindMedianSortedArrays {
         if (nums1.length == 0 && nums2.length == 0) {
             return 0;
         }
-        int n1 = 0, n2 = 0;
-        // 中位数index
+        int n1 = 0, n2 = 0, currCount= 0;
         int sumSize = nums1.length + nums2.length;
-        int a = sumSize / 2;
-
-        int[] newNums = new int[a + 1];
-
-        int currCount = n1 + n2;
-
-        while (currCount <= a) {
-            if (n1 >= nums1.length) {
+        // 中位数index
+        int midIndex = sumSize / 2;
+        // 合并后的数组
+        int[] newNums = new int[midIndex + 1];
+        // 只计算前midIndex
+        while (currCount <= midIndex) {
+            if (n1 >= nums1.length) {               // nums1已到最后
                 newNums[currCount] = nums2[n2];
                 n2++;
-            } else if (n2 >= nums2.length) {
+            } else if (n2 >= nums2.length) {        // nums2已到最后
                 newNums[currCount] = nums1[n1];
                 n1++;
             }else {
+                // 选最小的放入数组
                 if (nums1[n1] < nums2[n2]) {
                     newNums[currCount] = nums1[n1];
                     n1++;
@@ -45,9 +44,9 @@ public class _4_FindMedianSortedArrays {
         }
 
         if (sumSize % 2 == 0) {
-            return (newNums[a] + newNums[a - 1]) / 2.0;
+            return (newNums[midIndex] + newNums[midIndex - 1]) / 2.0;
         } else {
-            return newNums[a];
+            return newNums[midIndex];
         }
     }
 }
