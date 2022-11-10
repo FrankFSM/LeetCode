@@ -18,4 +18,17 @@ public class _5_LongestPalindromeTest extends TestCase {
         _5_LongestPalindrome lp = new _5_LongestPalindrome();
         System.out.println(lp.dpSolution(str));
     }
+
+
+    public void testCentreExpandSolution() {
+        String str = "aacabdkacaa";
+        String str1 = "cbbd";
+        String str2 = "xaabacxcabaax";
+        String str3 = "abacxcaba";
+        String str4 = "axaabacxcabaax";
+        String str5 = "bb";
+
+        _5_LongestPalindrome lp = new _5_LongestPalindrome();
+        System.out.println(lp.centreExpandSolution(str4));
+    }
 }

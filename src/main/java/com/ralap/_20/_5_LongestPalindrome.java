@@ -16,6 +16,12 @@ import java.util.Arrays;
  */
 public class _5_LongestPalindrome {
 
+    /**
+     * 暴力
+     *
+     * @param str
+     * @return
+     */
     public String solution(String str) {
         String maxSubStr = "";
         for (int i = 0; i < str.length(); i++) {
@@ -38,16 +44,22 @@ public class _5_LongestPalindrome {
         return true;
     }
 
+    /**
+     * 动态规划
+     *
+     * @param str
+     * @return
+     */
     public String dpSolution(String str) {
         int strLen = str.length();
         String[][] dp = new String[strLen][strLen];
 
+        // base case
         for (int i = 1; i < strLen; i++) {
             for (int j = 0; j < i; j++) {
                 dp[i][j] = "";
             }
         }
-        // base case
         for (int i = 0; i < strLen; i++) {
             dp[i][i] = str.charAt(i) + "";
         }
@@ -72,4 +84,46 @@ public class _5_LongestPalindrome {
         }
         return max;
     }
+
+    /**
+     * 中心扩展
+     *
+     * @return
+     */
+    public String centreExpandSolution(String str) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+        String maxStr = str.charAt(0) + "";
+        for (int i = 1; i < str.length() ; i++) {
+            int left = i - 1;
+            int right = i + 1;
+            String currStr = this.centreExpand(str, left, right);
+            maxStr = maxStr.length() < currStr.length() ? currStr: maxStr;
+
+            int left_2 = i - 1;
+            int right_2 = i;
+            // 以i,i-1为中心
+            currStr = this.centreExpand(str, left_2, right_2);
+            maxStr = maxStr.length() < currStr.length() ? currStr: maxStr;
+        }
+        return maxStr;
+    }
+
+    private String centreExpand(String str, int left, int right) {
+        String maxStr = "";
+        // 以i为中心
+        while (left >= 0 && right < str.length()) {
+            if(str.charAt(left) == str.charAt(right)){
+                String currStr = str.substring(left, right +1);
+                maxStr = maxStr.length() < currStr.length() ? currStr: maxStr;
+                left--;
+                right++;
+            }else {
+                break;
+            }
+        }
+        return maxStr;
+    }
+
 }
