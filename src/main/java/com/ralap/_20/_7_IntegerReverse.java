@@ -51,6 +51,7 @@ public class _7_IntegerReverse {
     public int mathSolution(int x) {
         int reverse = 0;
         while (x != 0) {
+            // 处理越界
             if (reverse > Integer.MAX_VALUE / 10 || reverse < Integer.MIN_VALUE / 10) {
                 return 0;
             }

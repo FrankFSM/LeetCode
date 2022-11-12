@@ -11,6 +11,6 @@ public class _7_IntegerReverseTest extends TestCase {
 
     public void testMathSolution() {
         _7_IntegerReverse ir = new _7_IntegerReverse();
-        System.out.println(ir.mathSolution(1534236469));
+        System.out.println(ir.mathSolution(-123));
     }
 }
