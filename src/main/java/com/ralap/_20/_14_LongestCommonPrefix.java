@@ -35,18 +35,40 @@ public class _14_LongestCommonPrefix {
         String firstStr = strs[0];
         int currIndex = 0;
         boolean flag = true;
-        while(flag){
+        while (flag) {
             for (int i = 1; i < strs.length; i++) {
                 if (currIndex >= strs[i].length()
                         || currIndex >= firstStr.length()
-                        || firstStr.charAt(currIndex) != strs[i].charAt(currIndex))
-                {
+                        || firstStr.charAt(currIndex) != strs[i].charAt(currIndex)) {
                     flag = false;
                     break;
                 }
             }
             currIndex++;
         }
-        return firstStr.substring(0, currIndex -1);
+        return firstStr.substring(0, currIndex - 1);
+    }
+
+    /**
+     * 分治
+     */
+    public String divideAndConquerSolution(String[] strs) {
+        return this.divideAndConquer(strs, 0, strs.length - 1);
+    }
+
+    private String divideAndConquer(String[] strs, int start, int end) {
+        if (start == end) {
+            return strs[start];
+        }
+        int mid = (start + end) / 2;
+        String left = divideAndConquer(strs, start, mid);
+        String right = divideAndConquer(strs, mid + 1, end);
+        int len = Math.min(left.length(), right.length());
+        for (int i = 0; i < len; i++) {
+            if (left.charAt(i) != right.charAt(i)) {
+                return left.substring(0, i);
+            }
+        }
+        return left.substring(0, len);
     }
 }
