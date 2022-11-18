@@ -30,6 +30,12 @@ import java.util.List;
  */
 public class _18_FourSum {
 
+    /**
+     * 排序 + 俩循环 + 双指针
+     * @param nums
+     * @param target
+     * @return
+     */
     public List<List<Integer>> solution(int[] nums, int target) {
         List<List<Integer>> resultList = new ArrayList<>();
 
@@ -38,16 +44,18 @@ public class _18_FourSum {
         }
         Arrays.sort(nums);
         int numsLen = nums.length;
+        // 控制数组越界
         if (((long) nums[0] + nums[1] + nums[2] + nums[3]) > target
                 || ((long) nums[numsLen - 1] + nums[numsLen - 2] + nums[numsLen - 3] + nums[numsLen - 4]) < target) {
             return resultList;
         }
         for (int i = 0; i < numsLen; i++) {
+            // 重复元素跳过
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
-
             for (int j = i + 1; j < numsLen; j++) {
+                // 重复元素跳过
                 if (j > i + 1 && nums[j] == nums[j - 1]) {
                     continue;
                 }
@@ -55,23 +63,28 @@ public class _18_FourSum {
                 int right = numsLen - 1;
 
                 while (left < right) {
+                    // 重复元素跳过
                     if (left > j + 1 && nums[left] == nums[left - 1]) {
                         left++;
                         continue;
                     }
+                    // 重复元素跳过
                     if (right < numsLen - 1 && nums[right] == nums[right + 1]) {
                         right--;
                         continue;
                     }
                     int sum = nums[i] + nums[j] + nums[left] + nums[right];
                     if (sum == target) {
+                        // 找到放入结果集
                         List<Integer> result = Arrays.asList(nums[i], nums[j], nums[left], nums[right]);
                         resultList.add(result);
                         left++;
                         right--;
                     } else if (sum < target) {
+                        // 目标的和小于目标只，左指针后移
                         left++;
                     } else {
+                        // 目标的和小于目标只，右指针前移
                         right--;
                     }
                 }
