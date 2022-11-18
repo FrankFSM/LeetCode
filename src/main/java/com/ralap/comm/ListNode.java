@@ -16,7 +16,13 @@ public class ListNode {
 
     @Override
     public String toString() {
-        return "ListNode{" +
-                "val=" + val + "}";
+        StringBuffer sb = new StringBuffer();
+        ListNode curr = this;
+        while (curr != null){
+           sb.append("ListNode{" +
+                    "val=" + curr.val + "}");
+           curr = curr.next;
+        }
+        return sb.toString();
     }
 }
