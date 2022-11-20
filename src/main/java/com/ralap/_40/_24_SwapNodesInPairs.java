@@ -28,14 +28,17 @@ import com.ralap.comm.ListNode;
  */
 public class _24_SwapNodesInPairs {
 
+    /**
+     * 普通遍历
+     * @param head
+     * @return
+     */
     public ListNode solution(ListNode head) {
         if(head == null  || head.next == null){
             return head;
         }
         ListNode root = new ListNode();
         root.next = head;
-
-
         while (root != null) {
             if(root.next == null || root.next.next == null){
                 break;
@@ -52,6 +55,20 @@ public class _24_SwapNodesInPairs {
 
         }
         return head;
+    }
 
+    /**
+     * 递归
+     * @param head
+     * @return
+     */
+    public ListNode recursionSolution(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode seconde = head.next;
+        head.next = recursionSolution(seconde.next);
+        seconde.next = head;
+        return seconde;
     }
 }
