@@ -11,7 +11,7 @@ import java.util.Map;
  * 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
  * 你可以按任意顺序返回答案。
  * <p>
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/two-sum
  */
@@ -30,10 +30,8 @@ public class _1_Twosum {
         // 遍历找到依另一个数据
         for (int i = 0; i < nums.length; i++) {
             int another = target - nums[i];
-            if (map.get(another) != null && map.get(another) != i) {
-                return new int[] {
-                    i, map.get(another)
-                } ;
+            if (map.get(another) != null) {
+                return new int[]{i, map.get(another)};
             }
             // 后面加入，避免覆盖
             map.put(nums[i], i);
