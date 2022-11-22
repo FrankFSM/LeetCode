@@ -45,6 +45,12 @@ package com.ralap._40;
  */
 public class _27_RemoveElement {
 
+    /**
+     * 快慢指针
+     * @param nums
+     * @param target
+     * @return
+     */
     public int solution(int[] nums, int target) {
         int fast = 0, slow = 0;
         while (fast < nums.length) {
