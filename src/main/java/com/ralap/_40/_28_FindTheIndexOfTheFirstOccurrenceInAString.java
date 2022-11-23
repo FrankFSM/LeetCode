@@ -52,7 +52,7 @@ public class _28_FindTheIndexOfTheFirstOccurrenceInAString {
     }
 
     /**
-     * KMP
+     * KMPfd
      */
     public int kmpSolution(String haystack, String needle) {
 
