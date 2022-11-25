@@ -41,7 +41,7 @@ public class _29_DivideTwoIntegers {
         boolean negative = true;
         // 被除数、除数都转为负数，（正数会有越界问题）
         if (dividend > 0) {
-            negative = !negative;
+            negative = false;
             dividend = -dividend;
         }
         if (divisor > 0) {
