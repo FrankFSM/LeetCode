@@ -147,20 +147,14 @@ public class _30_SubstringWithConcatenationOfAllWords {
             wordMap.clear();
             // 初始化Map
             for (int j = 0; j < words.length; j++) {
-                if (wordMap.containsKey(words[j])) {
-                    int count = wordMap.get(words[j]) + 1;
-                    wordMap.put(words[j], count);
-                } else {
-                    wordMap.put(words[j], 1);
-                }
+                wordMap.put(words[j], wordMap.getOrDefault(words[j], 0) +1);
             }
 
             int groupNum = words[0].length();
             int size = words.length;
-
-            int group = 0;
-            while (group + 1 <= size) {
-                int start = i + (group * groupNum);
+            int currGroup = 0;
+            while (currGroup < size) {
+                int start = i + (currGroup * groupNum);
                 int end = start + groupNum;
                 if(end > s.length()){
                     break;
@@ -170,15 +164,13 @@ public class _30_SubstringWithConcatenationOfAllWords {
                     wordMap.put(key, -1);
                     break;
                 }else {
-                    int count = wordMap.get(key) - 1;
-                    wordMap.put(key, count);
+                    wordMap.put(key, wordMap.get(key) - 1);
                 }
-                group++;
+                currGroup++;
             }
 
             if (wordMap.values().stream().allMatch(item -> (item == 0))){
                 res.add(i);
-
             }
         }
         return res;
