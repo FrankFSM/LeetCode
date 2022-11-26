@@ -91,7 +91,10 @@ public class _31_NextPermutation {
         }
     }
 
-
+    /**
+     * 技巧
+     * @param nums
+     */
     public void solution_v2(int[] nums) {
         if (nums.length == 0) {
             return;
@@ -115,8 +118,6 @@ public class _31_NextPermutation {
         this.swap(nums, first, second);
         this.sort(nums, first + 1);
         Arrays.stream(nums).forEach(System.out::println);
-
-
     }
 
     public void swap(int[] nums, int n1, int n2) {
@@ -138,6 +139,4 @@ public class _31_NextPermutation {
             }
         }
     }
-
-
 }
