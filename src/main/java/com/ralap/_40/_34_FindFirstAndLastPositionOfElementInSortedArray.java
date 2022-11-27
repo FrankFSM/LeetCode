@@ -30,7 +30,6 @@ package com.ralap._40;
 public class _34_FindFirstAndLastPositionOfElementInSortedArray {
 
     public int[] solution(int[] nums, int target) {
-
         int left = 0;
         int right = nums.length - 1;
         int start = -1;
@@ -51,7 +50,6 @@ public class _34_FindFirstAndLastPositionOfElementInSortedArray {
         }
         int first = start, second = start;
         while (first > 0 || second < nums.length - 1) {
-
             if (second == nums.length - 1 || (nums[second + 1] != target)
                     && (first == 0 || nums[first - 1] != target)) {
                 break;
@@ -59,12 +57,10 @@ public class _34_FindFirstAndLastPositionOfElementInSortedArray {
             if (first > 0 && nums[first - 1] == target) {
                 first--;
             }
-
             if (second < nums.length - 1 && nums[second + 1] == target) {
                 second++;
             }
         }
         return new int[]{first, second};
-
     }
 }
