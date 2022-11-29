@@ -1,6 +1,5 @@
 package com.ralap._20;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -15,6 +14,34 @@ import java.util.stream.IntStream;
  */
 public class _3_LengthOfLongestSubString {
 
+    /**
+     * 滑动窗口
+     */
+    public int slidingSolution(String str) {
+        if (str == null || str.isEmpty()) {
+            return 0;
+        }
+        int right = 0;
+        int max = 0;
+
+        List<Character> window = new ArrayList();
+        while (right < str.length()) {
+            char currStr = str.charAt(right);
+            right++;
+
+            while (window.contains(currStr)) {
+                int index = window.indexOf(currStr);
+                window = window.subList(index + 1, window.size());
+            }
+            window.add(currStr);
+            max = Math.max(max, window.size());
+        }
+        return max;
+    }
+
+    /**
+     * 暴力破解
+     */
     public int solution(String str) {
         if (str == null || str.length() == 0) {
             return 0;
@@ -47,34 +74,4 @@ public class _3_LengthOfLongestSubString {
         System.out.println("【" + maxStr + "】");
         return max;
     }
-
-    /**
-     * 滑动窗口
-     *
-     * @return
-     */
-    public int slidingSolution(String str) {
-        if (str == null || str.isEmpty()) {
-            return 0;
-        }
-        int right = 0;
-        int max = 0;
-
-        List<Character> window = new ArrayList();
-        while (right < str.length()) {
-            char currStr = str.charAt(right);
-            right++;
-
-            while (window.contains(currStr)) {
-                int index = window.indexOf(currStr);
-                IntStream.range(0, index + 1).forEach(item -> {
-                    window.remove(0);
-                });
-            }
-            window.add(currStr);
-            max = Math.max(max, window.size());
-        }
-        return max;
-    }
-
 }

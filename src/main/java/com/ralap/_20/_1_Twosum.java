@@ -1,6 +1,5 @@
 package com.ralap._20;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,21 +18,14 @@ public class _1_Twosum {
 
     /**
      * 通过HashMap
-     *
-     * @param nums
-     * @param target
-     * @return
      */
     public int[] solution(int[] nums, int target) {
-        // 初始化Map
         Map<Integer, Integer> map = new HashMap<>(nums.length);
-        // 遍历找到依另一个数据
         for (int i = 0; i < nums.length; i++) {
             int another = target - nums[i];
             if (map.get(another) != null) {
                 return new int[]{i, map.get(another)};
             }
-            // 后面加入，避免覆盖
             map.put(nums[i], i);
         }
         return new int[]{};

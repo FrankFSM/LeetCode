@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class _3_LengthOfLongestSubStringTest extends TestCase {
 
@@ -30,13 +31,14 @@ public class _3_LengthOfLongestSubStringTest extends TestCase {
     }
 
     public void testMain(){
-        List<Character> window = new ArrayList();
-        window.add('a');
-        window.add('b');
-        window.add('c');
-        window.add('d');
-        window.add('e');
-        window = window.subList(1, window.size());
-        window.stream().forEach(System.out::println);
+//        List<Character> window = new ArrayList();
+//        window.add('a');
+//        window.add('b');
+//        window.add('c');
+//        window.add('d');
+//        window.add('e');
+//        window = window.subList(1, window.size());
+//        window.stream().forEach(System.out::println);
+        IntStream.range(1, 4).forEach(System.out::println);
     }
 }

@@ -43,6 +43,7 @@ public class _4_FindMedianSortedArrays {
             currCount++;
         }
 
+        // 区分奇偶
         if (sumSize % 2 == 0) {
             return (newNums[midIndex] + newNums[midIndex - 1]) / 2.0;
         } else {

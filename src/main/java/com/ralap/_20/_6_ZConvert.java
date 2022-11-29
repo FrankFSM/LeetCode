@@ -33,7 +33,7 @@ public class _6_ZConvert {
         }
         int strLen = str.length();
         for (int i = 0; i < strLen; i++) {
-            // 规律分组，每组num
+            // 规律分组（一个来回），每组num
             int num = 2 * (rowCount - 1);
 
             // 计算下标
