@@ -31,11 +31,12 @@ import java.util.*;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/combination-sum
  */
-public class _39_CombinationSum {
+public class _40_CombinationSum2 {
 
     private List<List<Integer>> result = new ArrayList<>();
 
     public List<List<Integer>> solution(int[] candidates, int target) {
+        Arrays.sort(candidates);
         this.backtracking(candidates, new LinkedList<>(), target, 0, candidates.length - 1);
         return result;
     }
@@ -50,9 +51,15 @@ public class _39_CombinationSum {
             return;
         }
         for (int i = start; i <= end; i++) {
+            if (sum + nums[i] > target) {
+                break;
+            }
+            if (i > start && nums[i] == nums[i - 1]) {
+                continue;
+            }
             res.add(nums[i]);
             // 去除上层已经选择过的，剪枝
-            backtracking(nums, res, target, i, end);
+            backtracking(nums, res, target, i + 1, end);
             res.removeLast();
         }
     }
@@ -60,4 +67,5 @@ public class _39_CombinationSum {
     public int listSum(LinkedList<Integer> list) {
         return list.stream().reduce(0, Integer::sum);
     }
+
 }

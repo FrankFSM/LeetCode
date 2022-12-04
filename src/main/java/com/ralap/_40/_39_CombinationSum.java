@@ -36,45 +36,25 @@ public class _39_CombinationSum {
     private List<List<Integer>> result = new ArrayList<>();
 
     public List<List<Integer>> solution(int[] candidates, int target) {
-        this.backtracking(candidates, new LinkedList<>(), target);
+        this.backtracking(candidates, new LinkedList<>(), target, 0, candidates.length - 1);
         return result;
-
     }
 
-    public void backtracking(int[] nums, LinkedList<Integer> res, int target) {
+    public void backtracking(int[] nums, LinkedList<Integer> res, int target, int start, int end) {
         int sum = this.listSum(res);
-        if (sum > target) {
-            return;
-        } else if (sum == target) {
-            List<Integer> arr = new ArrayList<>(res);
-            if (result.stream().noneMatch(item -> (this.listSame(arr, item)))) {
-                result.add(new ArrayList<>(res));
-            }
+        if (sum == target) {
+            result.add(new ArrayList<>(res));
             return;
         }
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = start; i <= end; i++) {
             res.add(nums[i]);
-            backtracking(nums, res, target);
+            // 去除上层已经选择过的，剪枝
+            backtracking(nums, res, target, i, end);
             res.removeLast();
         }
     }
 
     public int listSum(LinkedList<Integer> list) {
-        return list.stream().reduce(0, (sum, n) -> sum + n);
-    }
-
-    public boolean listSame(List<Integer> l1, List<Integer> l2) {
-        if (l1.size() != l2.size()) {
-            return false;
-        }
-        l1.sort(Comparator.naturalOrder());
-        l2.sort(Comparator.naturalOrder());
-
-        for (int i = 0; i < l1.size(); i++) {
-            if (l1.get(i).intValue() != l2.get(i).intValue()) {
-                return false;
-            }
-        }
-        return true;
+        return list.stream().reduce(0, Integer::sum);
     }
 }

@@ -13,4 +13,17 @@ public class PrintUtils {
         sb.delete(sb.length() - separator.length(), sb.length()-1);
         System.out.println(sb);
     }
+
+    public static void printChar(char[][] array, String separator) {
+        for (int i = 0; i < array.length; i++) {
+            StringBuffer sb = new StringBuffer();
+            for (int j = 0; j < array[i].length; j++) {
+                sb.append(array[i][j]);
+                sb.append(separator);
+            }
+            sb.delete(sb.length() - separator.length(), sb.length()-1);
+            System.out.println(sb);
+        }
+
+    }
 }
