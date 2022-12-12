@@ -27,7 +27,7 @@ import java.util.Set;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/first-missing-positive
  */
-public class _041_FirstMissingPositive {
+public class _41_FirstMissingPositive {
     public int solution(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {

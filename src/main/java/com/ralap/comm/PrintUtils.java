@@ -39,6 +39,20 @@ public class PrintUtils {
         System.out.println(sb);
     }
 
+    public static void printTwoDimensionalListJoinString(List<List<String>> list, String separator) {
+        StringBuffer sb = new StringBuffer();
+        list.forEach(item -> {
+            item.forEach(i -> {
+                sb.append(i);
+                sb.append(separator);
+            });
+            sb.deleteCharAt(sb.lastIndexOf(","));
+            sb.append("\n");
+
+        });
+        System.out.println(sb);
+    }
+
     public static void printChar(char[][] array, String separator) {
         for (int i = 0; i < array.length; i++) {
             StringBuffer sb = new StringBuffer();
