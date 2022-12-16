@@ -36,9 +36,10 @@ public class _55_JumpGame {
     public boolean solution2(int[] nums) {
         int pos = 0;
         for (int i = 0; i < nums.length; i++) {
-            // 嫩不能跨过i
+            // 能不能跨到i步
             if (pos >= i) {
                 pos = Math.max(pos, i + nums[i]);
+                // 已经超过最后，已经能到达
                 if (pos >= nums.length-1) {
                     return true;
                 }
