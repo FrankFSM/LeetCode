@@ -75,5 +75,6 @@ public class PrintUtils {
             sb.delete(sb.length() - separator.length(), sb.length() - 1);
             System.out.println(sb);
         }
+        System.out.println();
     }
 }
