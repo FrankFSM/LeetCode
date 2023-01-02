@@ -14,15 +14,15 @@ public class ListNode {
         this.next = next;
     }
 
-    @Override
-    public String toString() {
-        StringBuffer sb = new StringBuffer();
-        ListNode curr = this;
-        while (curr != null){
-           sb.append("ListNode{" +
-                    "val=" + curr.val + "}");
-           curr = curr.next;
-        }
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        StringBuffer sb = new StringBuffer();
+//        ListNode curr = this;
+//        while (curr != null){
+//           sb.append("ListNode{" +
+//                    "val=" + curr.val + "}");
+//           curr = curr.next;
+//        }
+//        return sb.toString();
+//    }
 }
