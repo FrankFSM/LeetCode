@@ -77,4 +77,10 @@ public class PrintUtils {
         }
         System.out.println();
     }
+
+    public static void printArray(int[] array, String separator) {
+        Arrays.stream(array).forEach(item->{
+            System.out.print(item + ",");
+        });
+    }
 }
