@@ -110,7 +110,6 @@ public class _68_TextJustification {
             int firstSpaces = avgSpaces + (ex-- == 0 ? 0 : 1);
 
             StringBuffer sb = new StringBuffer(words[left]);
-
             for (int i = 0; i < firstSpaces; i++) {
                 sb.append(" ");
             }
