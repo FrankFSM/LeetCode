@@ -32,7 +32,11 @@ public class PrintUtils {
                 sb.append(i);
                 sb.append(separator);
             });
-            sb.deleteCharAt(sb.lastIndexOf(","));
+            if(!item.isEmpty()){
+                sb.deleteCharAt(sb.lastIndexOf(","));
+            }else {
+                sb.append("''");
+            }
             sb.append("\n");
 
         });
