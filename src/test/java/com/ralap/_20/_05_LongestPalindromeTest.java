@@ -2,10 +2,10 @@ package com.ralap._20;
 
 import junit.framework.TestCase;
 
-public class _5_LongestPalindromeTest extends TestCase {
+public class _05_LongestPalindromeTest extends TestCase {
 
     public void testSolution() {
-        _5_LongestPalindrome lp = new _5_LongestPalindrome();
+        _05_LongestPalindrome lp = new _05_LongestPalindrome();
         System.out.println(lp.solution("babad"));
     }
 
@@ -15,7 +15,7 @@ public class _5_LongestPalindromeTest extends TestCase {
         String str2 = "xaabacxcabaax";
         String str3 = "abacxcaba";
 
-        _5_LongestPalindrome lp = new _5_LongestPalindrome();
+        _05_LongestPalindrome lp = new _05_LongestPalindrome();
         System.out.println(lp.dpSolution(str));
     }
 
@@ -28,7 +28,7 @@ public class _5_LongestPalindromeTest extends TestCase {
         String str4 = "axaabacxcabaax";
         String str5 = "bb";
 
-        _5_LongestPalindrome lp = new _5_LongestPalindrome();
+        _05_LongestPalindrome lp = new _05_LongestPalindrome();
         System.out.println(lp.centreExpandSolution(str4));
     }
 }

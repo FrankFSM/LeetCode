@@ -2,7 +2,6 @@ package com.ralap._20;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 /**
  * 2. 无重复字符的最长子串
@@ -12,7 +11,7 @@ import java.util.stream.IntStream;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/longest-substring-without-repeating-characters/
  */
-public class _3_LengthOfLongestSubString {
+public class _03_LengthOfLongestSubString {
 
     /**
      * 滑动窗口

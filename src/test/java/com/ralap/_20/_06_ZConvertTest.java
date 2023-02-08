@@ -2,10 +2,10 @@ package com.ralap._20;
 
 import junit.framework.TestCase;
 
-public class _6_ZConvertTest extends TestCase {
+public class _06_ZConvertTest extends TestCase {
 
     public void testSolution() {
-        _6_ZConvert zc = new _6_ZConvert();
+        _06_ZConvert zc = new _06_ZConvert();
         String result = zc.solution("PAYPALISHIRING", 3);
         assertEquals(result, "PAHNAPLSIIGYIR");
         System.out.println(result);

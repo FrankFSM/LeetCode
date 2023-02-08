@@ -19,7 +19,7 @@ package com.ralap._20;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/reverse-integer
  */
-public class _7_IntegerReverse {
+public class _07_IntegerReverse {
 
     /**
      * 普通

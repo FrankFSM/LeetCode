@@ -2,15 +2,13 @@ package com.ralap._20;
 
 import junit.framework.TestCase;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.IntStream;
 
-public class _3_LengthOfLongestSubStringTest extends TestCase {
+public class _03_LengthOfLongestSubStringTest extends TestCase {
 
     public void testSolution() {
-        _3_LengthOfLongestSubString lolss = new _3_LengthOfLongestSubString();
+        _03_LengthOfLongestSubString lolss = new _03_LengthOfLongestSubString();
         String[] testStr = {" ", "", "aaa", "aab", "bba", "abcdadefcb"};
         String[] testStr1 = {"aab"};
 
@@ -21,7 +19,7 @@ public class _3_LengthOfLongestSubStringTest extends TestCase {
     }
 
     public void testSlidingSolution() {
-        _3_LengthOfLongestSubString lolss = new _3_LengthOfLongestSubString();
+        _03_LengthOfLongestSubString lolss = new _03_LengthOfLongestSubString();
         String[] testStr = {" ", "", "aaa", "aab", "abb", "abcdadefcb"};
         String[] testStr1 = {"aab"};
 

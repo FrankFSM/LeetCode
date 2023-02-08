@@ -12,7 +12,7 @@ package com.ralap._20;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/longest-palindromic-substring
  */
-public class _5_LongestPalindrome {
+public class _05_LongestPalindrome {
 
     /**
      * 暴力

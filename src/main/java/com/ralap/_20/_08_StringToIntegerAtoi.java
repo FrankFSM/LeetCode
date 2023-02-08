@@ -1,8 +1,5 @@
 package com.ralap._20;
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
 /**
  * 8. 字符串转换整数 (atoi)
  * <p>
@@ -36,7 +33,7 @@ import java.util.stream.IntStream;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/string-to-integer-atoi
  */
-public class _8_StringToIntegerAtoi {
+public class _08_StringToIntegerAtoi {
 
     public int soluteion(String str) {
         str = str.trim();

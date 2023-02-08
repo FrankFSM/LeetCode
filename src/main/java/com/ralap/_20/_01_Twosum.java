@@ -14,7 +14,7 @@ import java.util.Map;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/two-sum
  */
-public class _1_Twosum {
+public class _01_Twosum {
 
     /**
      * 通过HashMap

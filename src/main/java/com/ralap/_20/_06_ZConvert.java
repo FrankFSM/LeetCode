@@ -19,7 +19,7 @@ package com.ralap._20;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/zigzag-conversion
  */
-public class _6_ZConvert {
+public class _06_ZConvert {
 
     public String solution(String str, int rowCount) {
         // 只有一行，直接返回

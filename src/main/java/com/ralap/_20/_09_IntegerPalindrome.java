@@ -13,7 +13,7 @@ package com.ralap._20;
  * 链接：https://leetcode.cn/problems/palindrome-number
  */
 
-public class _9_IntegerPalindrome {
+public class _09_IntegerPalindrome {
 
     public boolean solution(int x) {
         if (x < 0) {

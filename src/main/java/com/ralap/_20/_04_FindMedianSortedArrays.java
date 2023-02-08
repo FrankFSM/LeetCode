@@ -10,7 +10,7 @@ package com.ralap._20;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/median-of-two-sorted-arrays
  */
-public class _4_FindMedianSortedArrays {
+public class _04_FindMedianSortedArrays {
 
     public double solution(int[] nums1, int[] nums2) {
         if (nums1.length == 0 && nums2.length == 0) {

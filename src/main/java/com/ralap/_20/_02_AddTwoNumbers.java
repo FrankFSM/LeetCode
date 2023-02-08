@@ -13,7 +13,7 @@ import com.ralap.sgg.link.LinkNode;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/add-two-numbers
  */
-public class _2_AddTwoNumbers {
+public class _02_AddTwoNumbers {
 
     public LinkNode solution(LinkNode l1, LinkNode l2) {
         int carry = 0;
