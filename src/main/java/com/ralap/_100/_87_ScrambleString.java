@@ -54,9 +54,13 @@ public class _87_ScrambleString {
                 dp[i][j][1] = (char1[i] == char2[j]);
             }
         }
+        // 枚举长度
         for (int len = 2; len <= s1Len; len++) {
+            // 遍历s1的长度，做为其实位置
             for (int i = 0; i <= s1Len - len; i++) {
+                // 遍历s2的长度， 作为起始位置
                 for (int j = 0; j <= s1Len - len; j++) {
+                    // 划分位置
                     for (int k = 1; k <= len - 1; k++) {
                         if (dp[i][j][k] && dp[i + k][j + k][len - k]) {
                             dp[i][j][len] = true;
