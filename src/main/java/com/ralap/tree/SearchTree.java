@@ -56,11 +56,11 @@ public class SearchTree {
      *
      * @return
      */
-    public TreeNode remove(TreeNode root, int value) {
+    public TreeNode remove(TreeNode root, long value) {
         if (root == null) {
             return null;
         }
-        int rootVal = root.val;
+        long rootVal = root.val;
         if (rootVal == value) {
             if (root.left == null && root.right == null) {
                 return null;
