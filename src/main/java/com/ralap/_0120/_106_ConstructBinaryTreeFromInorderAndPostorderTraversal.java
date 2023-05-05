@@ -34,24 +34,44 @@ postorder 保证是树的后序遍历
 
 import com.ralap.comm.TreeNode;
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
+import java.util.Arrays;
+
 class _106_ConstructBinaryTreeFromInorderAndPostorderTraversal {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        return null;
+
+        return recursion(inorder, postorder);
+    }
+
+    private TreeNode recursion(int[] inorder, int[] postorder) {
+        if (postorder.length == 0) {
+            return null;
+        }
+        int rootNumber = postorder[postorder.length -1];
+        TreeNode root = new TreeNode(rootNumber);
+        if (postorder.length == 1) {
+            return root;
+        }
+
+        int rootIndex = findIndex(inorder,rootNumber);
+        int[] leftPost = Arrays.copyOfRange(postorder, 0, rootIndex);
+        int[] rightPost = Arrays.copyOfRange(postorder, rootIndex, postorder.length - 1);
+        int[] leftIn = Arrays.copyOfRange(inorder, 0, rootIndex);
+        int[] rightIn = Arrays.copyOfRange(inorder, rootIndex + 1, inorder.length);
+        TreeNode left = recursion( leftIn,leftPost);
+        root.left = left;
+        TreeNode right = recursion( rightIn,rightPost);
+        root.right = right;
+        return root;
+    }
+
+
+    private int findIndex(int[] array, int target) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == target) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
 
