@@ -1,5 +1,9 @@
 package com.ralap._0120;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 119. 杨辉三角 II
  * <p>
@@ -36,8 +40,23 @@ package com.ralap._0120;
  * 链接：https://leetcode-cn.com/problems/pascals-triangle-ii
  */
 class _119_PascalsTriangleIi {
-//    public List<Integer> getRow(int rowIndex) {
-//
-//    }
+    public List<Integer> getRow(int rowIndex) {
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(Arrays.asList(1));
+        result.add(Arrays.asList(1, 1));
+        for (int i = 2; i <= rowIndex; i++) {
+            List arr = new ArrayList();
+            for (int j = 0; j <=  i; j++) {
+                if (j == 0 || j == i ) {
+                    arr.add(1);
+                } else {
+                    arr.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
+                }
+            }
+            result.add(arr);
+        }
+        return result.get(rowIndex);
+
+    }
 }
 
