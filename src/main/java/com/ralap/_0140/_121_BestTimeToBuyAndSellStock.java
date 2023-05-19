@@ -33,7 +33,31 @@ package com.ralap._0140;
  */
 class _121_BestTimeToBuyAndSellStock {
     public int maxProfit(int[] prices) {
-        return 0;
+        return this.skill(prices);
+    }
+
+    private int brute(int[] prices){
+        int max = 0;
+        for (int i = 0; i < prices.length - 1; i++) {
+            for (int j = i + 1; j < prices.length; j++) {
+                max = Math.max(prices[j] - prices[i], max);
+            }
+        }
+        return max;
+    }
+
+    private int skill(int[] prices) {
+        int min = Integer.MAX_VALUE;
+        int max = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < min) {
+                min = prices[i];
+            }else {
+                max = Math.max(max, prices[i] - min);
+            }
+
+        }
+        return max;
     }
 }
 
