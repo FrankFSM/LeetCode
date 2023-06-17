@@ -1,6 +1,8 @@
 package com.ralap._0140;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 127. 单词接龙
@@ -43,8 +45,49 @@ import java.util.List;
  */
 class _127_WordLadder {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        Set<String> dict = new HashSet<>(wordList);
+        if (!dict.contains(endWord)) {
+            return 0;
+        }
+        Set<String> s1 = new HashSet<>();
+        s1.add(beginWord);
+        Set<String> s2 = new HashSet<>();
+        s2.add(endWord);
+        int step = 1;
+        while (!s1.isEmpty() && !s2.isEmpty()) {
+            step++;
+            Set<String> tmp;
+            if (s1.size() > s2.size()) {
+                tmp = s1;
+                s1 = s2;
+                s2 = tmp;
+            }
+            s1.forEach(item -> dict.remove(item));
+            s2.forEach(item -> dict.remove(item));
+            Set<String> s = new HashSet<>();
+            for (String item : s1) {
+                for (int i = 0; i < item.length(); i++) {
+                    char[] chars = item.toCharArray();
+                    for (char j = 'a'; j <= 'z'; j++) {
+                        chars[i] = j;
+                        // 下一个字符
+                        String nextChar = new String(chars);
+                        // 与s2相遇
+                        if (s2.contains(nextChar)) {
+                            return step;
+                        }
+                        // 不在字典中，跳过
+                        if (!dict.contains(nextChar)) {
+                            continue;
+                        }
+                        s.add(nextChar);
+                    }
+                }
+            }
+            s1 = s;
+        }
+        // 不存在路径
         return 0;
-
     }
 }
 

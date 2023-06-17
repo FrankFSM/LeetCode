@@ -105,4 +105,11 @@ public class TreeNode {
         }
         return 0;
     }
+
+    public boolean isLeafNode() {
+        if (this.left == null && this.right == null) {
+            return true;
+        }
+        return false;
+    }
 }

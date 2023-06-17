@@ -49,24 +49,51 @@ package com.ralap._0140;
 
 import com.ralap.comm.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
  * }
  */
 class _129_SumRootToLeafNumbers {
+    private List<String> numList = new ArrayList<>();
+
     public int sumNumbers(TreeNode root) {
-        return 0;
+        if (root == null) {
+            return 0;
+        }
+        this.backtrack(root, new StringBuffer());
+        return numList.stream().mapToInt(Integer::parseInt).sum();
+    }
+
+    private void backtrack(TreeNode node, StringBuffer buffer) {
+        buffer.append(node.val);
+        // 叶子节点, 加入集合
+        if (node.left == null && node.right == null) {
+            numList.add(buffer.toString());
+            return;
+        }
+
+        if (node.left != null) {
+            this.backtrack(node.left, buffer);
+            buffer.deleteCharAt(buffer.length() - 1);
+        }
+        if (node.right != null) {
+            this.backtrack(node.right, buffer);
+            buffer.deleteCharAt(buffer.length() - 1);
+        }
     }
 }
 
